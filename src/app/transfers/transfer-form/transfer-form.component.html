@@ -1,0 +1,63 @@
+<form>
+  <div>
+    <label for="athletes">Imię i nazwisko sportowca:<sup>*</sup></label>
+    <select name="athletes" id="athletes">
+      <option value="0">Maciej Białkowski</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="managers">Imię i nazwisko managera:<sup>*</sup></label>
+    <select name="managers" id="managers">
+      <option value="0">Jan Kowalski</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="currentClub">Aktualny klub:<sup>*</sup></label>
+    <input type="currentClub" name="currentClub" id="currentClub" disabled value="Juventus"/>
+  </div>
+
+  <div>
+    <label for="newClub">Nowy klub:<sup>*</sup></label>
+    <select name="newClub" id="newClub">
+      <option value="0">AC Milan</option>
+      <option value="1">Juventus</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="transferDate">Data przeprowadzenia transferu:<sup>*</sup></label>
+    <input type="date" name="transferDate" id="transferDate"/>
+  </div>
+
+  <div>
+    <label for="price">Kwota transferu (zł):<sup>*</sup></label>
+    <input type="number" name="price" id="price"/>
+  </div>
+
+  <div>
+    <label for="commission">Prowizja (%):<sup>*</sup></label>
+    <input type="number" name="commission" id="commission"/>
+  </div>
+
+  <div>
+    <label for="isLoan">Wypożyczenie?:<sup>*</sup></label>
+    <input type="checkbox" name="isLoan" id="isLoan"/>
+  </div>
+
+  <div>
+    <label for="contractStartDate">Początek kontraktu:<sup>*</sup></label>
+    <input type="date" name="contractStartDate" id="contractStartDate"/>
+  </div>
+
+  <div>
+    <label for="contractEndDate">Koniec kontraktu:<sup>*</sup></label>
+    <input type="date" name="contractEndDate" id="contractEndDate" required/>
+  </div>
+</form>
+
+<div>
+  <input type="submit" value="Dodaj" class="form-action-button accept-button"/>
+  <a href="" class="action-button cancel-button">Anuluj</a>
+</div>

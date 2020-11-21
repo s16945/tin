@@ -1,0 +1,174 @@
+body {
+  font-family: Optima, Segoe, Segoe UI, Candara, Calibri, Arial, sans-serif;
+  font-size: 18px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#main {
+  padding: 1.5rem;
+}
+
+header,
+footer {
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  position: relative;
+  top: 0;
+  background-image: linear-gradient(140deg, #A6BEC9 0%, #5D8798 50%, #1F2D33 75%);
+
+  img {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    left: 0;
+    padding: 50px;
+  }
+
+  h1 {
+    font-size: 60px;
+  }
+}
+
+footer {
+  position: fixed;
+  font-size: 14px;
+  bottom: 0;
+  height: 40px;
+  background: #121420;
+  color: white
+}
+
+nav {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  background-color: #2C2B3C;
+
+  li {
+    display: inline
+  }
+
+  a {
+    color: #EE8434;
+    padding: 1rem 2rem;
+  }
+
+  a:hover {
+    background-color: #5C6B73;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-item-active {
+  background-color: #49545B;
+}
+
+////////// TABLE
+.table-container {
+  table {
+    border-collapse: collapse;
+  }
+
+  padding: 0 5rem 2rem;
+}
+
+.table-container th,
+.table-container td {
+  border: 1px solid #bdc3c7;
+}
+
+.table-container th,
+.table-container td {
+  padding: 0.5rem;
+}
+
+.table-container tr:nth-child(odd) {
+  background-color: #F4F5F6;
+}
+
+.table-container tr th {
+  background-color: #778792;
+}
+
+.table-container td {
+  ul {
+    padding-left: 0
+  }
+
+  li {
+    display: inline
+  }
+}
+
+
+/////////// FORM
+form {
+  margin-left: 2rem;
+  width: 300px;
+}
+
+form select,
+form input {
+  padding: 0.5rem;
+}
+
+form input[type="checkbox"] {
+  width: initial;
+  margin: 1.5rem;
+}
+
+abbr[title='required'] {
+  color: #c0392b;
+}
+
+.action-button,
+.table-action-button,
+.form-action-button {
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: 500;
+}
+
+.action-button {
+  margin-left: 5rem;
+}
+
+.table-action-button,
+.form-action-button{
+  margin: 0.5rem;
+}
+
+.form-action-button {
+  margin: 2rem 0 0 2rem;
+  font-size: 18px;
+}
+
+.accept-button {
+  background-color: mediumseagreen;
+}
+
+.edit-button {
+  background-color: darkorange;
+}
+
+.cancel-button {
+  background-color: gray;
+}
+
+.delete-button {
+  background-color: indianred;
+}
+
+.info-button {
+  background-color: cornflowerblue;
+}
