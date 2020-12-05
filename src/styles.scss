@@ -2,7 +2,7 @@ body {
   font-family: Optima, Segoe, Segoe UI, Candara, Calibri, Arial, sans-serif;
   font-size: 18px;
   margin: 0 !important;
-  padding: 0 !important;
+  padding-bottom: 40px;
 }
 
 #main {
@@ -117,18 +117,64 @@ form {
   width: 300px;
 }
 
+form label {
+  display: flex;
+  flex-direction: row;
+  text-align: right;
+  width: 400px;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="date"],
+form input[type="checkbox"],
+form input[type="number"],
+form select {
+  height: 20px;
+  flex: 0 0 200px;
+  margin-left: 10px;
+  width: 100%
+}
+
+form select {
+  height: initial;
+}
+
+input, select, textarea {
+  -ms-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+}
+
 form select,
 form input {
   padding: 0.5rem;
 }
 
 form input[type="checkbox"] {
-  width: initial;
-  margin: 1.5rem;
+  margin: 5px;
 }
 
 abbr[title='required'] {
   color: #c0392b;
+}
+
+.errors-text i {
+  font-size: 0.85em;
+  line-height: 2.25rem;
+  color: #a94442;
+}
+
+.ng-valid[required], .ng-valid.required {
+  border: 2px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+  border: 2px solid #a94442;
 }
 
 .action-button,
@@ -144,7 +190,7 @@ abbr[title='required'] {
 }
 
 .table-action-button,
-.form-action-button{
+.form-action-button {
   margin: 0.5rem;
 }
 
