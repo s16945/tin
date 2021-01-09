@@ -10,6 +10,7 @@ import { TransferListComponent } from './transfers/transfer-list/transfer-list.c
 import { ManagerFormComponent } from './managers/manager-form/manager-form.component';
 import { AthleteFormComponent } from './athletes/athlete-form/athlete-form.component';
 import { TransferFormComponent } from './transfers/transfer-form/transfer-form.component';
+import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     MainComponent,
@@ -23,7 +24,8 @@ import { TransferFormComponent } from './transfers/transfer-form/transfer-form.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [MainComponent]

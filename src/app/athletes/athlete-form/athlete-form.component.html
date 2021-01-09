@@ -1,49 +1,118 @@
-<form>
+<form [formGroup]="athleteForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="firstName">Imię:<sup>*</sup></label>
-    <input type="text" name="firstName" id="firstName"/>
+    <input type="text" name="firstName" id="firstName" formControlName="firstName"/>
+    <div class="errors-text"
+         *ngIf="athleteForm.get('firstName').invalid && (athleteForm.get('firstName').dirty || athleteForm.get('firstName').touched)">
+
+      <div *ngIf="athleteForm.get('firstName').errors.required">
+        <i>Imię jest wymagane</i>
+      </div>
+      <div *ngIf="athleteForm.get('firstName').errors.minlength">
+        <i>Imię musi składać się z conajmniej 3 znaków</i>
+      </div>
+      <div *ngIf="athleteForm.get('firstName').errors.maxLength">
+        <i>Imię musi składać się z maksymalnie 20 znaków</i>
+      </div>
+    </div>
   </div>
 
   <div>
     <label for="lastName">Nazwisko:<sup>*</sup></label>
-    <input type="text" name="lastName" id="lastName"/>
+    <input type="text" name="lastName" id="lastName" formControlName="lastName"/>
+    <div class="errors-text"
+         *ngIf="athleteForm.get('lastName').invalid && (athleteForm.get('lastName').dirty || athleteForm.get('firstName').touched)">
+
+      <div *ngIf="athleteForm.get('lastName').errors.required">
+        <i>Nazwisko jest wymagane</i>
+      </div>
+      <div *ngIf="athleteForm.get('lastName').errors.minlength">
+        <i>Nazwisko musi składać się z conajmniej 3 znaków</i>
+      </div>
+      <div *ngIf="athleteForm.get('lastName').errors.maxLength">
+        <i>Nazwisko musi składać się z maksymalnie 20 znaków</i>
+      </div>
+    </div>
   </div>
 
   <div>
     <label for="email">Adres email:<sup>*</sup></label>
-    <input type="email" name="email" id="email"/>
+    <input type="email" name="email" id="email" formControlName="email"/>
+    <div class="errors-text"
+         *ngIf="athleteForm.get('email').invalid && (athleteForm.get('email').dirty || athleteForm.get('email').touched)">
+
+      <div *ngIf="athleteForm.get('email').errors.required">
+        <i>Email jest wymagany</i>
+      </div>
+      <div *ngIf="athleteForm.get('email').errors.email">
+        <i>Niepoprawny email</i>
+      </div>
+    </div>
   </div>
 
   <div>
     <label for="phoneNumber">Numer telefonu:<sup>*</sup></label>
-    <input type="tel" name="phoneNumber" id="phoneNumber"/>
+    <input type="tel" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber"/>
+    <div class="errors-text"
+         *ngIf="athleteForm.get('phoneNumber').invalid && (athleteForm.get('phoneNumber').dirty || athleteForm.get('phoneNumber').touched)">
+
+      <div *ngIf="athleteForm.get('phoneNumber').errors.required">
+        <i>Numer telefon jest wymagany</i>
+      </div>
+      <div
+        *ngIf="athleteForm.get('phoneNumber').errors.minlength || athleteForm.get('phoneNumber').errors.maxLength || athleteForm.get('phoneNumber').errors.invalidNumber">
+        <i>Numer telefonu powinien zawierać dokładnie 9 cyfr</i>
+      </div>
+    </div>
   </div>
 
   <div>
     <label for="birthdate">Data urodzenia:<sup>*</sup></label>
-    <input type="date" name="birthdate" id="birthdate"/>
+    <input type="date" name="birthdate" id="birthdate" formControlName="birthdate"/>
+    <div class="errors-text"
+         *ngIf="athleteForm.get('birthdate').invalid && (athleteForm.get('birthdate').dirty || athleteForm.get('birthdate').touched)">
+
+      <div *ngIf="athleteForm.get('birthdate').errors.required">
+        <i>Data urodzenia jest wymagana</i>
+      </div>
+      <div *ngIf="athleteForm.get('birthdate').errors.invalidDate">
+        <i>Pole musi zawierać datę w poprawnym formacie</i>
+      </div>
+    </div>
   </div>
 
   <div>
     <label for="clubs">Klub:<sup>*</sup></label>
-    <select name="clubs" id="clubs">
+    <select name="clubs" id="clubs" formControlName="club">
       <option value="0">AC Milan</option>
       <option value="1">Juventus</option>
     </select>
+    <div class="errors-text"
+         *ngIf="athleteForm.get('club').invalid && (athleteForm.get('club').dirty || athleteForm.get('club').touched)">
+      <div *ngIf="athleteForm.get('club').errors.invalidSelection">
+        <i>Wartość nie może byc pusta</i>
+      </div>
+    </div>
   </div>
 
   <div>
     <label for="nationalities">Narodowość:<sup>*</sup></label>
-    <select name="nationalities" id="nationalities">
+    <select name="nationalities" id="nationalities" formControlName="nationality">
       <option value="poland">Polska</option>
       <option value="usa">USA</option>
       <option value="germany">Niemcy</option>
       <option value="france">Francja</option>
     </select>
+    <div class="errors-text"
+         *ngIf="athleteForm.get('nationality').invalid && (athleteForm.get('nationality').dirty || athleteForm.get('nationality').touched)">
+      <div *ngIf="athleteForm.get('nationality').errors.invalidSelection">
+        <i>Wartość nie może byc pusta</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <input type="submit" value="Dodaj" class="form-action-button accept-button"/>
+    <a href="" class="action-button cancel-button">Anuluj</a>
   </div>
 </form>
-
-<div>
-  <input type="submit" value="Dodaj" class="form-action-button accept-button"/>
-  <a href="" class="action-button cancel-button">Anuluj</a>
-</div>
