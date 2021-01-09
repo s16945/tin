@@ -7,6 +7,9 @@ import {
   numberValidator,
   selectionValidator
 } from '../../util/form/validator/common-validator';
+import {Manager, Transfer} from '../../api/api-interfaces';
+import {TransferService} from '../service/transfer.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-transfer-form',
@@ -17,7 +20,8 @@ export class TransferFormComponent implements OnInit {
   transferForm: FormGroup;
   contractDatesGroup: FormGroup;
 
-  constructor() {
+  constructor(private service: TransferService,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -42,7 +46,16 @@ export class TransferFormComponent implements OnInit {
 
   onSubmit() {
     this.transferForm.markAllAsTouched();
+    const transferObj = this.transferForm.getRawValue() as Transfer;
 
-    // do submit
+    this.service.createTransfer(transferObj).subscribe(res => {
+      this.goBack();
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

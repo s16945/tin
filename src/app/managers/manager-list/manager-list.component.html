@@ -1,26 +1,21 @@
 <div class="table-container">
   <table>
     <tr>
-      <th>Imię</th>
-      <th>Nazwisko</th>
-      <th>Email</th>
-      <th>Numer telefonu</th>
-      <th>Start kariery</th>
-      <th>Akcje</th>
+      <th *ngFor="let colName of headerNames">{{ colName }}</th>
     </tr>
-    <tr>
-      <td>Jan</td>
-      <td>Kowalski</td>
-      <td>jan.kowalski@acme.com</td>
-      <td>123 456 789</td>
-      <td>12-12-1978</td>
+    <tr *ngFor="let manager of managers$ | async">
+      <td>{{ manager.firstName }}</td>
+      <td>{{ manager.lastName }}</td>
+      <td>{{ manager.email }}</td>
+      <td>{{ manager.phoneNumber }}</td>
+      <td>{{ getEmploymentYears(manager.careerStartDate) }}</td>
       <td>
         <ul>
           <li>
             <a href="" class="table-action-button edit-button">Edytuj</a>
           </li>
           <li>
-            <a href="" class="table-action-button delete-button">Usuń</a>
+            <a (click)="deleteRecord(manager._id)" class="table-action-button delete-button">Usuń</a>
           </li>
         </ul>
       </td>

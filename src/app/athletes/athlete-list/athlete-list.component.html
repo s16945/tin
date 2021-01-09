@@ -1,49 +1,21 @@
 <div class="table-container">
   <table>
     <tr>
-      <th>Imię</th>
-      <th>Nazwisko</th>
-      <th>Email</th>
-      <th>Numer telefonu</th>
-      <th>Wiek</th>
-      <th>Klub</th>
-      <th>Narodowość</th>
-      <th>Akcje</th>
+      <th *ngFor="let colName of headerNames">{{ colName }}</th>
     </tr>
-    <tr>
-      <td>Maciej</td>
-      <td>Białkowski</td>
-      <td>mbialkowski@bialkowski.com</td>
-      <td>321 123 111</td>
-      <td>25</td>
-      <td>Juventus</td>
-      <td>Polska</td>
+    <tr *ngFor="let athlete of athletes$ | async">
+      <td>{{ athlete.firstName }}</td>
+      <td>{{ athlete.lastName }}</td>
+      <td>{{ athlete.email }}</td>
+      <td>{{ athlete.phoneNumber }}</td>
+      <td>{{ getAthleteAge(athlete.birthDate) }}</td>
       <td>
         <ul>
           <li>
             <a href="" class="table-action-button edit-button">Edytuj</a>
           </li>
           <li>
-            <a href="" class="table-action-button delete-button">Usuń</a>
-          </li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>Amelia</td>
-      <td>Nowal</td>
-      <td>an@gmail.com</td>
-      <td>123 123 13</td>
-      <td>21</td>
-      <td>AC Milan</td>
-      <td>Polska</td>
-      <td>
-        <ul>
-          <li>
-            <a href="" class="table-action-button edit-button">Edytuj</a>
-          </li>
-          <li>
-            <a href="" class="table-action-button delete-button">Usuń</a>
+            <a (click)="deleteRecord(athlete._id)" class="table-action-button delete-button">Usuń</a>
           </li>
         </ul>
       </td>

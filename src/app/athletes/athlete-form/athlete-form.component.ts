@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {dateValidator, numberValidator, selectionValidator} from '../../util/form/validator/common-validator';
+import {AthleteService} from '../service/athlete.service';
+import {Location} from '@angular/common';
+import {Athlete} from '../../api/api-interfaces';
 
 @Component({
   selector: 'app-athletes-form',
@@ -10,7 +13,8 @@ export class AthleteFormComponent implements OnInit {
 
   athleteForm: FormGroup;
 
-  constructor() {
+  constructor(private service: AthleteService,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -24,14 +28,21 @@ export class AthleteFormComponent implements OnInit {
       phoneNumber: new FormControl('', [Validators.required, Validators.minLength(9),
         Validators.maxLength(9), numberValidator()]),
       birthdate: new FormControl('', [Validators.required, dateValidator()]),
-      club: new FormControl('', [Validators.required, selectionValidator()]),
-      nationality: new FormControl('', [Validators.required, selectionValidator()])
     });
   }
 
   onSubmit() {
     this.athleteForm.markAllAsTouched();
+    const athleteObj = this.athleteForm.getRawValue() as Athlete;
 
-    // do submit
+    this.service.createAthlete(athleteObj).subscribe(res => {
+      this.goBack();
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
