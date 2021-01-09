@@ -82,37 +82,7 @@
   </div>
 
   <div>
-    <label for="clubs">Klub:<sup>*</sup></label>
-    <select name="clubs" id="clubs" formControlName="club">
-      <option value="0">AC Milan</option>
-      <option value="1">Juventus</option>
-    </select>
-    <div class="errors-text"
-         *ngIf="athleteForm.get('club').invalid && (athleteForm.get('club').dirty || athleteForm.get('club').touched)">
-      <div *ngIf="athleteForm.get('club').errors.invalidSelection">
-        <i>Wartość nie może byc pusta</i>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <label for="nationalities">Narodowość:<sup>*</sup></label>
-    <select name="nationalities" id="nationalities" formControlName="nationality">
-      <option value="poland">Polska</option>
-      <option value="usa">USA</option>
-      <option value="germany">Niemcy</option>
-      <option value="france">Francja</option>
-    </select>
-    <div class="errors-text"
-         *ngIf="athleteForm.get('nationality').invalid && (athleteForm.get('nationality').dirty || athleteForm.get('nationality').touched)">
-      <div *ngIf="athleteForm.get('nationality').errors.invalidSelection">
-        <i>Wartość nie może byc pusta</i>
-      </div>
-    </div>
-  </div>
-
-  <div>
     <input type="submit" value="Dodaj" class="form-action-button accept-button"/>
-    <a href="" class="action-button cancel-button">Anuluj</a>
+    <a (click)="goBack()" class="action-button cancel-button">Anuluj</a>
   </div>
 </form>

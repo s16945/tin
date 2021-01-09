@@ -1,32 +1,24 @@
 <div class="table-container">
   <table>
     <tr>
-      <th>Sportwiec</th>
-      <th>Manager</th>
-      <th>Data transferu</th>
-      <th>Kwota transferu</th>
-      <th>Prowizja</th>
-      <th>Wypożyczenie?</th>
-      <th>Kontrakt start</th>
-      <th>Kontrakt koniec</th>
-      <th>Akcje</th>
+      <th *ngFor="let colName of headerNames">{{ colName }}</th>
     </tr>
-    <tr>
-      <td>Maciej Białkowski</td>
-      <td>Jan Kowalski</td>
-      <td>10-10-2020</td>
-      <td>12 000 000 zł</td>
-      <td>500 000 zł</td>
-      <td>Nie</td>
-      <td>01-01-2021</td>
-      <td>01-01-2022</td>
+    <tr *ngFor="let transfer of transfers$ | async">
+      <td>{{ transfer.athlete.firstName + ' ' + transfer.athlete.lastName }}</td>
+      <td>{{ transfer.manager.firstName + ' ' + transfer.manager.lastName }}</td>
+      <td>{{ getSimpleDate(transfer.transferDate) }}</td>
+      <td>{{ transfer.price }}</td>
+      <td>{{ transfer.commission }}</td>
+      <td>{{ transfer.isLoan }}</td>
+      <td>{{ getSimpleDate(transfer.contractStartDate) }}</td>
+      <td>{{ getSimpleDate(transfer.contractEndDate) }}</td>
       <td class="actions">
         <ul>
           <li>
             <a href="" class="table-action-button edit-button">Edytuj</a>
           </li>
           <li>
-            <a href="" class="table-action-button delete-button">Usuń</a>
+            <a (click)="deleteRecord(transfer._id)" class="table-action-button delete-button">Usuń</a>
           </li>
         </ul>
       </td>

@@ -4,7 +4,7 @@ export interface Athlete {
   lastName: string;
   email: string;
   phoneNumber: number;
-  birthDate: Date;
+  birthDate: string;
 }
 
 export interface Manager {
@@ -13,7 +13,7 @@ export interface Manager {
   lastName: string;
   email: string;
   phoneNumber: number;
-  careerStartDate: Date;
+  careerStartDate: string;
 }
 
 export interface Transfer {
@@ -22,12 +22,12 @@ export interface Transfer {
   manager_id: number;
   currentClub: string;
   newClub: string;
-  transferDate: Date;
+  transferDate: string;
   price: number;
   commission: number;
   isLoan: boolean;
-  contractStartDate: Date;
-  contractEndDate: Date;
+  contractStartDate: string;
+  contractEndDate: string;
   athlete: Athlete;
   manager: Manager;
 }

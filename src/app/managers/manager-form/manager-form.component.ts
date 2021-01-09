@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {dateValidator, numberValidator} from '../../util/form/validator/common-validator';
-import {FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ManagerService} from '../service/manager.service';
+import {Location} from '@angular/common';
+import {Manager} from '../../api/api-interfaces';
 
 @Component({
   selector: 'app-manager-form',
@@ -10,7 +13,8 @@ export class ManagerFormComponent implements OnInit {
 
   managerForm: FormGroup;
 
-  constructor() {
+  constructor(private service: ManagerService,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -29,7 +33,16 @@ export class ManagerFormComponent implements OnInit {
 
   onSubmit() {
     this.managerForm.markAllAsTouched();
+    const managerObj = this.managerForm.getRawValue() as Manager;
 
-    // do submit
+    this.service.createManager(managerObj).subscribe(res => {
+      this.goBack();
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
