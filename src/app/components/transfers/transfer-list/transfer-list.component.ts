@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {TransferService} from '../service/transfer.service';
 import {Observable} from 'rxjs';
-import {Transfer} from '../../api/api-interfaces';
-import {getSimpleDateString} from '../../util/date-utils';
+import {Transfer} from '../../../api/api-interfaces';
+import {getSimpleDateString} from '../../../util/date-utils';
 
 
 @Component({

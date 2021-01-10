@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {Manager} from '../../api/api-interfaces';
-import {ApiPath} from '../../api/api-path';
+import {Manager} from '../../../api/api-interfaces';
+import {ApiPath} from '../../../api/api-path';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({

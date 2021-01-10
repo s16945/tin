@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {dateValidator, numberValidator} from '../../util/form/validator/common-validator';
+import {dateValidator, numberValidator} from '../../../util/form/validator/common-validator';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ManagerService} from '../service/manager.service';
 import {Location} from '@angular/common';
-import {Manager} from '../../api/api-interfaces';
+import {Manager} from '../../../api/api-interfaces';
 
 @Component({
   selector: 'app-manager-form',

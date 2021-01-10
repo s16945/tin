@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Athlete} from '../../api/api-interfaces';
+import {Athlete} from '../../../api/api-interfaces';
 import {Observable} from 'rxjs';
-import {ApiPath} from '../../api/api-path';
+import {ApiPath} from '../../../api/api-path';
 
 @Injectable({
   providedIn: 'root'

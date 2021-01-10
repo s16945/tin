@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {dateValidator, numberValidator, selectionValidator} from '../../util/form/validator/common-validator';
+import {dateValidator, numberValidator, selectionValidator} from '../../../util/form/validator/common-validator';
 import {AthleteService} from '../service/athlete.service';
 import {Location} from '@angular/common';
-import {Athlete} from '../../api/api-interfaces';
+import {Athlete} from '../../../api/api-interfaces';
 
 @Component({
   selector: 'app-athletes-form',

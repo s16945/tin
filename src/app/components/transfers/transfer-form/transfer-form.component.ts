@@ -6,8 +6,8 @@ import {
   numberRangeValidator,
   numberValidator,
   selectionValidator
-} from '../../util/form/validator/common-validator';
-import {Manager, Transfer} from '../../api/api-interfaces';
+} from '../../../util/form/validator/common-validator';
+import {Manager, Transfer} from '../../../api/api-interfaces';
 import {TransferService} from '../service/transfer.service';
 import {Location} from '@angular/common';
 

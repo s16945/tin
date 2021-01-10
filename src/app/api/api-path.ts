@@ -15,4 +15,7 @@ export class ApiPath {
   // TRANSFERS
   static TRANSFERS_PATH = () => API_URL + 'transfers';
   static SINGLE_TRANSFER = (id) => ApiPath.TRANSFERS_PATH() + `/${id}`;
+
+  // AUTH
+  static AUTH = () => API_URL + 'auth';
 }

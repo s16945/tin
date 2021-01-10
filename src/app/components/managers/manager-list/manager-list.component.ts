@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Manager} from '../../api/api-interfaces';
-import {getYearsFrom} from '../../util/date-utils';
+import {Manager} from '../../../api/api-interfaces';
+import {getYearsFrom} from '../../../util/date-utils';
 import {ManagerService} from '../service/manager.service';
 
 @Component({

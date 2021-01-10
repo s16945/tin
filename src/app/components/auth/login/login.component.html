@@ -1,0 +1,36 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="email">Adres email:<sup>*</sup></label>
+    <input type="email" name="email" id="email" formControlName="email"/>
+    <div class="errors-text"
+         *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+
+      <div *ngIf="loginForm.get('email').errors.required">
+        <i>Email jest wymagany</i>
+      </div>
+      <div *ngIf="loginForm.get('email').errors.email">
+        <i>Niepoprawny email</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Hasło:<sup>*</sup></label>
+    <input type="password" name="password" id="password" formControlName="password"/>
+    <div class="errors-text"
+         *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+
+      <div *ngIf="loginForm.get('password').errors.required">
+        <i>Hasło jest wymagane</i>
+      </div>
+      <div
+        *ngIf="loginForm.get('password').errors.minlength">
+        <i>Hasło powinno zawierać co najmniej 4 znaki</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <input type="submit" value="Zaloguj" class="form-action-button accept-button"/>
+  </div>
+</form>

@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {Athlete} from '../../api/api-interfaces';
+import {Athlete} from '../../../api/api-interfaces';
 import {Observable} from 'rxjs';
 import {AthleteService} from '../service/athlete.service';
-import {getYearsFrom} from '../../util/date-utils';
+import {getYearsFrom} from '../../../util/date-utils';
 
 @Component({
   selector: 'app-athletes-list',
