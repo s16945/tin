@@ -1,19 +1,16 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ApiPath} from '../../../api/api-path';
+import {AbstractService} from '../../../api/abstract.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-
-  constructor(private http: HttpClient) {
-  }
+export class AuthService extends AbstractService {
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post<{ token: string }>(ApiPath.AUTH(), {email: username, password})
+    return super.post<{ token: string }>(ApiPath.LOGIN(), {email: username, password})
       .pipe(
         map(result => {
           localStorage.setItem('access_token', result.token);
@@ -22,11 +19,15 @@ export class AuthService {
       );
   }
 
+  register(body: any) {
+    return super.post(ApiPath.REGISTER, body);
+  }
+
   logout() {
     localStorage.removeItem('access_token');
   }
 
-  public get loggedIn(): boolean {
+  public loggedIn(): boolean {
     return localStorage.getItem('access_token') !== null;
   }
 }

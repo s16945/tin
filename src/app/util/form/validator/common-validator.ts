@@ -77,3 +77,18 @@ export function dateAfterOtherDateValidator(dateFieldName1, dateFieldName2) {
   };
 }
 
+export function passwordMatchValidator(passwordField1, passwordField2) {
+  return (controlGroup: AbstractControl): { [key: string]: any } | null => {
+    if (!controlGroup.get(passwordField1).value || !controlGroup.get(passwordField2).value) {
+      return null;
+    }
+
+    const errorObj = {passmatch: true};
+    const pass1 = controlGroup.get(passwordField1).value;
+    const pass2 = controlGroup.get(passwordField2).value;
+
+
+    return pass1 !== pass2 ? errorObj : null;
+  };
+}
+

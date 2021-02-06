@@ -9,13 +9,13 @@
       <td>{{ getSimpleDate(transfer.transferDate) }}</td>
       <td>{{ transfer.price }}</td>
       <td>{{ transfer.commission }}</td>
-      <td>{{ transfer.isLoan }}</td>
+      <td>{{ transfer.isLoan ? 'TAK' : 'NIE' }}</td>
       <td>{{ getSimpleDate(transfer.contractStartDate) }}</td>
       <td>{{ getSimpleDate(transfer.contractEndDate) }}</td>
       <td class="actions">
         <ul>
           <li>
-            <a href="" class="table-action-button edit-button">Edytuj</a>
+            <a [routerLink]="['edit', transfer._id]" class="table-action-button edit-button">Edytuj</a>
           </li>
           <li>
             <a (click)="deleteRecord(transfer._id)" class="table-action-button delete-button">Usuń</a>
@@ -26,4 +26,4 @@
   </table>
 </div>
 
-<a routerLink="edit" class="action-button accept-button">Dodaj szczegóły nowego transferu</a>
+<a routerLink="add" class="action-button accept-button">Dodaj szczegóły nowego transferu</a>

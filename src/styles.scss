@@ -184,6 +184,7 @@ abbr[title='required'] {
   padding: 0.5rem 1rem;
   color: white;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .action-button {
@@ -219,3 +220,24 @@ abbr[title='required'] {
 .info-button {
   background-color: cornflowerblue;
 }
+
+/////////// Athlete details view
+.athlete-profile {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.athlete-profile .athlete-info,
+.athlete-profile .athlete-photo{
+  margin: 10px;
+  float: left;
+}
+
+.athlete-profile .athlete-photo img {
+  width: 200px;
+  height: 250px;
+  border: 1px solid black;
+}
+
+

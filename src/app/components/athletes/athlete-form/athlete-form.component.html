@@ -67,6 +67,24 @@
   </div>
 
   <div>
+    <label for="currentClub">Aktualny klub:<sup>*</sup></label>
+    <input type="text" name="currentClub" id="currentClub" formControlName="currentClub"/>
+    <div class="errors-text"
+         *ngIf="athleteForm.get('currentClub').invalid && (athleteForm.get('currentClub').dirty || athleteForm.get('firstName').touched)">
+
+      <div *ngIf="athleteForm.get('currentClub').errors.required">
+        <i>Imię jest wymagane</i>
+      </div>
+      <div *ngIf="athleteForm.get('currentClub').errors.minlength">
+        <i>Imię musi składać się z conajmniej 3 znaków</i>
+      </div>
+      <div *ngIf="athleteForm.get('currentClub').errors.maxLength">
+        <i>Imię musi składać się z maksymalnie 20 znaków</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
     <label for="birthdate">Data urodzenia:<sup>*</sup></label>
     <input type="date" name="birthdate" id="birthdate" formControlName="birthdate"/>
     <div class="errors-text"
@@ -82,7 +100,7 @@
   </div>
 
   <div>
-    <input type="submit" value="Dodaj" class="form-action-button accept-button"/>
+    <input type="submit" value="Zapisz" class="form-action-button accept-button"/>
     <a (click)="goBack()" class="action-button cancel-button">Anuluj</a>
   </div>
 </form>

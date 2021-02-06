@@ -1,0 +1,30 @@
+<div *ngIf="athlete$ | async as athlete" class="athlete-profile">
+  <div>
+    <div class="athlete-photo">
+      <img src="assets/images/athlete_placeholder.PNG" alt="Athlete photo">
+    </div>
+
+    <div class="athlete-info">
+      <h2>{{ athlete.firstName + ' ' + athlete.lastName }} ({{ getAthleteAge(athlete.birthDate) }}l) </h2>
+      <h3>{{ athlete.currentClub }}</h3>
+      <p>Email: {{ athlete.email }} / Tel: {{ athlete.phoneNumber }}</p>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <tr>
+        <th *ngFor="let colName of headerNames">{{ colName }}</th>
+      </tr>
+      <tr *ngFor="let transfer of transferHistory$ | async">
+        <td>{{ transfer.manager.firstName + ' ' + transfer.manager.lastName }}</td>
+        <td>{{ getSimpleDate(transfer.transferDate) }}</td>
+        <td>{{ transfer.price }}</td>
+        <td>{{ transfer.commission }}</td>
+        <td>{{ transfer.isLoan ? 'TAK' : 'NIE' }}</td>
+        <td>{{ getSimpleDate(transfer.contractStartDate) }}</td>
+        <td>{{ getSimpleDate(transfer.contractEndDate) }}</td>
+      </tr>
+    </table>
+  </div>
+</div>

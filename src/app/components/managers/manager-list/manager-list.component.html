@@ -12,7 +12,7 @@
       <td>
         <ul>
           <li>
-            <a href="" class="table-action-button edit-button">Edytuj</a>
+            <a [routerLink]="['edit', manager._id]" class="table-action-button edit-button">Edytuj</a>
           </li>
           <li>
             <a (click)="deleteRecord(manager._id)" class="table-action-button delete-button">Usuń</a>
@@ -22,5 +22,3 @@
     </tr>
   </table>
 </div>
-
-<a routerLink="edit" class="action-button accept-button">Dodaj nowego managera</a>

@@ -14,6 +14,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {JwtModule} from '@auth0/angular-jwt';
 import {LoginComponent} from './components/auth/login/login.component';
+import {RegisterComponent} from './components/auth/register/register.component';
+import {AthleteDetailsComponent} from './components/athletes/athlete-details/athlete-details.component';
+import {DatePipe} from '@angular/common';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -29,7 +32,9 @@ export function tokenGetter() {
     ManagerFormComponent,
     AthleteFormComponent,
     TransferFormComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    AthleteDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,8 +49,8 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [],
-  bootstrap: [MainComponent]
+  providers: [DatePipe],
+  bootstrap: [MainComponent],
 })
 export class MainModule {
 }

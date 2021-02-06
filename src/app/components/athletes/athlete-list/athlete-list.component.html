@@ -8,11 +8,15 @@
       <td>{{ athlete.lastName }}</td>
       <td>{{ athlete.email }}</td>
       <td>{{ athlete.phoneNumber }}</td>
+      <td>{{ athlete.currentClub }}</td>
       <td>{{ getAthleteAge(athlete.birthDate) }}</td>
       <td>
         <ul>
           <li>
-            <a href="" class="table-action-button edit-button">Edytuj</a>
+            <a [routerLink]="['details', athlete._id]" class="table-action-button info-button">Szczegóły</a>
+          </li>
+          <li>
+            <a [routerLink]="['edit', athlete._id]" class="table-action-button edit-button">Edytuj</a>
           </li>
           <li>
             <a (click)="deleteRecord(athlete._id)" class="table-action-button delete-button">Usuń</a>
@@ -23,4 +27,4 @@
   </table>
 </div>
 
-<a routerLink="edit" class="action-button accept-button">Dodaj nowego sportowca</a>
+<a routerLink="add" class="action-button accept-button">Dodaj nowego sportowca</a>

@@ -1,34 +1,36 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Athlete} from '../../../api/api-interfaces';
+import {Athlete, Transfer} from '../../../api/api-interfaces';
 import {Observable} from 'rxjs';
 import {ApiPath} from '../../../api/api-path';
+import {AbstractService} from '../../../api/abstract.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AthleteService {
-
-  constructor(public http: HttpClient) {
-  }
+export class AthleteService extends AbstractService {
 
   getAthletes(): Observable<Athlete[]> {
-    return this.http.get<Athlete[]>(ApiPath.ATHLETES_PATH());
+    return super.get<Athlete[]>(ApiPath.ATHLETES_PATH());
   }
 
   getAthleteById(id: number): Observable<Athlete> {
-    return this.http.get<Athlete>(ApiPath.SINGLE_ATHLETE(id));
+    return super.get<Athlete>(ApiPath.SINGLE_ATHLETE(id));
   }
 
   createAthlete(athlete: Athlete): Observable<Athlete> {
-    return this.http.post<Athlete>(ApiPath.ATHLETES_PATH(), athlete);
+    return super.post<Athlete>(ApiPath.ATHLETES_PATH(), athlete);
   }
 
   updateAthlete(id: number, athlete: Athlete): Observable<Athlete> {
-    return this.http.put<Athlete>(ApiPath.SINGLE_ATHLETE(id), athlete);
+    return super.put<Athlete>(ApiPath.SINGLE_ATHLETE(id), athlete);
   }
 
   deleteAthlete(id: number): Observable<Athlete> {
-    return this.http.delete<Athlete>(ApiPath.SINGLE_ATHLETE(id));
+    return super.delete<Athlete>(ApiPath.SINGLE_ATHLETE(id));
+  }
+
+  getAthleteTransferHistory(id: number): Observable<Transfer[]> {
+    return super.get<Transfer[]>(ApiPath.SINGLE_ATHLETE_TRANSFERS(id));
   }
 }

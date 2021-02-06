@@ -34,4 +34,8 @@ export class LoginComponent implements OnInit {
         err => console.log('Could not authenticate:', err)
       );
   }
+
+  goToRegister() {
+    this.router.navigate(['/register']);
+  }
 }

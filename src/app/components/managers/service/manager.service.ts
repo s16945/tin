@@ -3,32 +3,26 @@ import {Observable} from 'rxjs';
 import {Manager} from '../../../api/api-interfaces';
 import {ApiPath} from '../../../api/api-path';
 import {HttpClient} from '@angular/common/http';
+import {AbstractService} from '../../../api/abstract.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ManagerService {
-
-  constructor(public http: HttpClient) {
-  }
+export class ManagerService extends AbstractService {
 
   getManagers(): Observable<Manager[]> {
-    return this.http.get<Manager[]>(ApiPath.MANAGERS_PATH());
+    return super.get<Manager[]>(ApiPath.MANAGERS_PATH());
   }
 
   getManagerById(id: number): Observable<Manager> {
-    return this.http.get<Manager>(ApiPath.SINGLE_MANAGER(id));
-  }
-
-  createManager(athlete: Manager): Observable<Manager> {
-    return this.http.post<Manager>(ApiPath.MANAGERS_PATH(), athlete);
+    return super.get<Manager>(ApiPath.SINGLE_MANAGER(id));
   }
 
   updateManager(id: number, athlete: Manager): Observable<Manager> {
-    return this.http.put<Manager>(ApiPath.SINGLE_MANAGER(id), athlete);
+    return super.put<Manager>(ApiPath.SINGLE_MANAGER(id), athlete);
   }
 
   deleteManager(id: number): Observable<Manager> {
-    return this.http.delete<Manager>(ApiPath.SINGLE_MANAGER(id));
+    return super.delete<Manager>(ApiPath.SINGLE_MANAGER(id));
   }
 }
