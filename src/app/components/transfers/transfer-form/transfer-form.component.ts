@@ -99,6 +99,10 @@ export class TransferFormComponent implements OnInit {
 
   onSubmit() {
     this.transferForm.markAllAsTouched();
+    if (!this.transferForm.valid) {
+      return;
+    }
+
     const transferObj = this.transferForm.getRawValue();
     const datesGroup = this.transferForm.get('contractDatesGroup');
     const contractStartDate = datesGroup.get('contractStartDate');

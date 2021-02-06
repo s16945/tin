@@ -19,20 +19,18 @@ footer {
 }
 
 header {
-  position: relative;
   top: 0;
-  background-image: linear-gradient(140deg, #A6BEC9 0%, #5D8798 50%, #1F2D33 75%);
+  background-color: #F5BB00;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  left: 250px;
 
-  img {
-    width: 120px;
-    height: 120px;
-    position: absolute;
-    left: 0;
-    padding: 50px;
-  }
-
-  h1 {
-    font-size: 60px;
+  .username {
+    font-size: 0.8rem;
+    width: 100%;
+    text-align: right;
+    margin-right: 300px;
   }
 }
 
@@ -46,16 +44,27 @@ footer {
 }
 
 nav {
-  margin-top: 5px;
-  width: 100%;
+  width: 250px;
   display: flex;
   background-color: #2C2B3C;
+  height: 100%;
+  position: fixed;
+  top: 0;
+
+  img {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    left: 0;
+    padding: 60px;
+  }
 
   li {
-    display: inline
+    display: block
   }
 
   a {
+    display: block;
     color: #EE8434;
     padding: 1rem 2rem;
   }
@@ -63,6 +72,18 @@ nav {
   a:hover {
     background-color: #5C6B73;
   }
+
+  .menu-items {
+    width: 100%;
+    padding: 0;
+    top: 200px;
+    position: relative;
+  }
+}
+
+.content {
+  margin-left: 250px;
+  margin-top: 100px;
 }
 
 a {
@@ -94,10 +115,6 @@ a {
 
 .table-container tr:nth-child(odd) {
   background-color: #F4F5F6;
-}
-
-.table-container tr th {
-  background-color: #778792;
 }
 
 .table-container td {
@@ -185,6 +202,8 @@ abbr[title='required'] {
   color: white;
   font-weight: 500;
   cursor: pointer;
+  border-radius: 5px;
+  border: none;
 }
 
 .action-button {
@@ -197,7 +216,7 @@ abbr[title='required'] {
 }
 
 .form-action-button {
-  margin: 2rem 0 0 2rem;
+  margin: 2rem 0 0 0;
   font-size: 18px;
 }
 
@@ -238,6 +257,10 @@ abbr[title='required'] {
   width: 200px;
   height: 250px;
   border: 1px solid black;
+}
+
+.form-buttons {
+  margin: 2rem 0 2rem 0;
 }
 
 

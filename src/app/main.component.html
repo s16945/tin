@@ -1,10 +1,10 @@
 <header>
-  <h1>Fabryka sportu</h1>
-  <img src="assets/images/logo.jpg" alt="Fabryka sportu logo">
+  <p *ngIf="authService.loggedIn()" class="username"><b>Zalogowany użytkownik:</b> {{ authService.getUsername() }}</p>
 </header>
 
 <nav>
-  <ul>
+  <img src="assets/images/logo.jpg" alt="Fabryka sportu logo">
+  <ul class="menu-items">
     <li><a routerLink="/home" routerLinkActive="nav-item-active">Strona główna</a></li>
     <li><a routerLink="/managers" routerLinkActive="nav-item-active">Managerowie</a></li>
     <li><a routerLink="/athletes" routerLinkActive="nav-item-active">Sportowcy</a></li>
@@ -19,7 +19,9 @@
   </ul>
 </nav>
 
-<router-outlet id="main"></router-outlet>
+<div class="content">
+  <router-outlet id="main"></router-outlet>
+</div>
 
 <footer>
   Marcin Pejski, s16945
