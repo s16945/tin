@@ -30,4 +30,20 @@ export class AuthService extends AbstractService {
   public loggedIn(): boolean {
     return localStorage.getItem('access_token') !== null;
   }
+
+  getUsername() {
+    const token = localStorage.getItem('access_token');
+    const parsedToken = this.parseJwt(token);
+    return parsedToken.username;
+  }
+
+  parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+  };
 }

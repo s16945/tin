@@ -9,7 +9,7 @@ import {Location} from '@angular/common';
 })
 export class MainComponent {
 
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
               private location: Location) {
   }
 
@@ -19,6 +19,7 @@ export class MainComponent {
 
   logout() {
     this.authService.logout();
+    alert('Wylogowano');
     this.location.back();
   }
 }

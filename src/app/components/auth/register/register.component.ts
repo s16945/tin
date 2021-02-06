@@ -58,7 +58,10 @@ export class RegisterComponent implements OnInit {
     this.auth.register(rawForm)
       .pipe(first())
       .subscribe(
-        result => this.router.navigate(['/login']),
+        result => {
+          alert('Pomyślnie zarejestrowano');
+          this.router.navigate(['/login']);
+        },
         err => console.log('Could not register:', err)
       );
   }

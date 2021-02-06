@@ -59,6 +59,10 @@ export class AthleteFormComponent implements OnInit {
 
   onSubmit() {
     this.athleteForm.markAllAsTouched();
+    if (!this.athleteForm.valid) {
+      return;
+    }
+
     const athleteObj = this.athleteForm.getRawValue() as Athlete;
 
     this.idParam$.pipe(

@@ -30,7 +30,10 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.loginForm.get('email').value, this.loginForm.get('password').value)
       .pipe(first())
       .subscribe(
-        result => this.router.navigate(['/']),
+        result => {
+          alert('Pomyślnie zalogowano');
+          this.router.navigate(['/']);
+        },
         err => console.log('Could not authenticate:', err)
       );
   }

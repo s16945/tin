@@ -56,6 +56,10 @@ export class ManagerFormComponent implements OnInit {
 
   onSubmit() {
     this.managerForm.markAllAsTouched();
+    if (!this.managerForm.valid) {
+      return;
+    }
+
     const managerObj = this.managerForm.getRawValue() as Manager;
 
     this.idParam$.pipe(
