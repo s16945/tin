@@ -1,0 +1,30 @@
+<div class="table-container">
+  <table>
+    <tr>
+      <th *ngFor="let colName of headerNames">{{ colName }}</th>
+    </tr>
+    <tr *ngFor="let athlete of athletes$ | async">
+      <td>{{ athlete.firstName }}</td>
+      <td>{{ athlete.lastName }}</td>
+      <td>{{ athlete.email }}</td>
+      <td>{{ athlete.phoneNumber }}</td>
+      <td>{{ athlete.currentClub }}</td>
+      <td>{{ getAthleteAge(athlete.birthDate) }}</td>
+      <td>
+        <ul>
+          <li>
+            <a [routerLink]="['details', athlete._id]" class="table-action-button info-button">Szczegóły</a>
+          </li>
+          <li>
+            <a [routerLink]="['edit', athlete._id]" class="table-action-button edit-button">Edytuj</a>
+          </li>
+          <li>
+            <a (click)="deleteRecord(athlete._id)" class="table-action-button delete-button">Usuń</a>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<a routerLink="add" class="action-button accept-button">Dodaj nowego sportowca</a>

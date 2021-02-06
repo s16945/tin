@@ -1,0 +1,129 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="firstName">Imię:<sup>*</sup>
+    </label>
+    <input type="text" name="firstName" id="firstName" formControlName="firstName"/>
+    <div class="errors-text"
+         *ngIf="registerForm.get('firstName').invalid && (registerForm.get('firstName').dirty || registerForm.get('firstName').touched)">
+
+      <div *ngIf="registerForm.get('firstName').errors.required">
+        <i>Imię jest wymagane</i>
+      </div>
+      <div *ngIf="registerForm.get('firstName').errors.minlength">
+        <i>Imię musi składać się z conajmniej 3 znaków</i>
+      </div>
+      <div *ngIf="registerForm.get('firstName').errors.maxLength">
+        <i>Imię musi składać się z maksymalnie 20 znaków</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="lastName">Nazwisko:<sup>*</sup></label>
+    <input type="text" name="lastName" id="lastName" formControlName="lastName"/>
+    <div class="errors-text"
+         *ngIf="registerForm.get('lastName').invalid && (registerForm.get('lastName').dirty || registerForm.get('firstName').touched)">
+
+      <div *ngIf="registerForm.get('lastName').errors.required">
+        <i>Nazwisko jest wymagane</i>
+      </div>
+      <div *ngIf="registerForm.get('lastName').errors.minlength">
+        <i>Nazwisko musi składać się z conajmniej 3 znaków</i>
+      </div>
+      <div *ngIf="registerForm.get('lastName').errors.maxLength">
+        <i>Nazwisko musi składać się z maksymalnie 20 znaków</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="phoneNumber">Numer telefonu:<sup>*</sup></label>
+    <input type="tel" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber"/>
+    <div class="errors-text"
+         *ngIf="registerForm.get('phoneNumber').invalid && (registerForm.get('phoneNumber').dirty || registerForm.get('phoneNumber').touched)">
+
+      <div *ngIf="registerForm.get('phoneNumber').errors.required">
+        <i>Numer telefon jest wymagany</i>
+      </div>
+      <div
+        *ngIf="registerForm.get('phoneNumber').errors.minlength || registerForm.get('phoneNumber').errors.maxLength || registerForm.get('phoneNumber').errors.invalidNumber">
+        <i>Numer telefonu powinien zawierać dokładnie 9 cyfr</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="careerStartDate">Początek kariery:<sup>*</sup></label>
+    <input type="date" name="careerStartDate" id="careerStartDate" formControlName="careerStartDate"/>
+    <div class="errors-text"
+         *ngIf="registerForm.get('careerStartDate').invalid && (registerForm.get('careerStartDate').dirty || registerForm.get('careerStartDate').touched)">
+
+      <div *ngIf="registerForm.get('careerStartDate').errors.required">
+        <i>Data rozpoczęcia kariery jest wymagana</i>
+      </div>
+      <div *ngIf="registerForm.get('careerStartDate').errors.invalidDate">
+        <i>Pole musi zawierać datę w poprawnym formacie</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Adres email:<sup>*</sup></label>
+    <input type="email" name="email" id="email" formControlName="email"/>
+    <div class="errors-text"
+         *ngIf="registerForm.get('email').invalid && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+
+      <div *ngIf="registerForm.get('email').errors.required">
+        <i>Email jest wymagany</i>
+      </div>
+      <div *ngIf="registerForm.get('email').errors.email">
+        <i>Niepoprawny email</i>
+      </div>
+    </div>
+  </div>
+
+  <ng-container [formGroup]="passwordsGroup">
+    <div>
+      <label for="password">Hasło:<sup>*</sup></label>
+      <input type="password" name="password" id="password" formControlName="password"/>
+      <div class="errors-text"
+           *ngIf="passwordsGroup.get('password').invalid && (passwordsGroup.get('password').dirty || passwordsGroup.get('password').touched)">
+
+        <div *ngIf="passwordsGroup.get('password').errors.required">
+          <i>Hasło jest wymagane</i>
+        </div>
+        <div
+          *ngIf="passwordsGroup.get('password').errors.minlength">
+          <i>Hasło powinno zawierać co najmniej 4 znaki</i>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="repeatPassword">Powtórz hasło:<sup>*</sup></label>
+      <input type="password" name="repeatPassword" id="repeatPassword" formControlName="repeatPassword"/>
+      <div class="errors-text"
+           *ngIf="passwordsGroup.get('repeatPassword').invalid && (passwordsGroup.get('repeatPassword').dirty || passwordsGroup.get('repeatPassword').touched)">
+
+        <div *ngIf="passwordsGroup.get('repeatPassword').errors.required">
+          <i>Hasło jest wymagane</i>
+        </div>
+        <div
+          *ngIf="passwordsGroup.get('repeatPassword').errors.minlength">
+          <i>Hasło powinno zawierać co najmniej 4 znaki</i>
+        </div>
+      </div>
+    </div>
+
+    <div class="errors-text"
+         *ngIf="passwordsGroup.invalid && (passwordsGroup.dirty || passwordsGroup.touched)">
+      <div *ngIf="passwordsGroup.errors && passwordsGroup.errors.passmatch">
+        <i>Podane hasła muszą być identyczne!</i>
+      </div>
+    </div>
+  </ng-container>
+
+  <div>
+    <input type="submit" value="Zarejestruj" class="form-action-button accept-button"/>
+  </div>
+</form>

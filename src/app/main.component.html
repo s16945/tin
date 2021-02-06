@@ -9,6 +9,13 @@
     <li><a routerLink="/managers" routerLinkActive="nav-item-active">Managerowie</a></li>
     <li><a routerLink="/athletes" routerLinkActive="nav-item-active">Sportowcy</a></li>
     <li><a routerLink="/transfers" routerLinkActive="nav-item-active">Transfery</a></li>
+    <ng-container *ngIf="!isLoggedIn() else loggedIn">
+      <li><a routerLink="/login" routerLinkActive="nav-item-active">Zaloguj</a></li>
+    </ng-container>
+
+    <ng-template #loggedIn>
+      <li><a (click)="logout()" routerLinkActive="nav-item-active">Wyloguj</a></li>
+    </ng-template>
   </ul>
 </nav>
 

@@ -1,0 +1,142 @@
+<form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="athletes">Imię i nazwisko sportowca:<sup>*</sup></label>
+    <select (change)="updateCurrentClub($event.target.value)" name="athletes" id="athletes" formControlName="athlete_id">
+      <option *ngFor="let athlete of athletes$ | async"
+              value="{{ athlete._id }}">{{ athlete.firstName + ' ' + athlete.lastName }}</option>
+    </select>
+    <div class="errors-text"
+         *ngIf="transferForm.get('athlete_id').invalid && (transferForm.get('athlete_id').dirty || transferForm.get('athlete_id').touched)">
+      <div *ngIf="transferForm.get('athlete_id').errors.invalidSelection">
+        <i>Wartość nie może byc pusta</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="managers">Imię i nazwisko managera:<sup>*</sup></label>
+    <select name="managers" id="managers" formControlName="manager_id">
+      <option *ngFor="let manager of managers$ | async"
+              value="{{ manager._id }}">{{ manager.firstName + ' ' + manager.lastName }}</option>
+    </select>
+    <div class="errors-text"
+         *ngIf="transferForm.get('manager_id').invalid && (transferForm.get('manager_id').dirty || transferForm.get('manager_id').touched)">
+      <div *ngIf="transferForm.get('manager_id').errors.invalidSelection">
+        <i>Wartość nie może byc pusta</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="currentClub">Aktualny klub:<sup>*</sup></label>
+    <input type="text" name="currentClub" id="currentClub" disabled [value]="currentClub"/>
+  </div>
+
+  <div>
+    <label for="newClub">Nowy klub:<sup>*</sup></label>
+    <input type="text" name="newClub" id="newClub" formControlName="newClub"/>
+    <div class="errors-text"
+         *ngIf="transferForm.get('newClub').invalid && (transferForm.get('newClub').dirty || transferForm.get('newClub').touched)">
+      <div *ngIf="transferForm.get('newClub').errors.invalidSelection">
+        <i>Wartość nie może byc pusta</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="transferDate">Data przeprowadzenia transferu:<sup>*</sup></label>
+    <input type="date" name="transferDate" id="transferDate" formControlName="transferDate"/>
+    <div class="errors-text"
+         *ngIf="transferForm.get('transferDate').invalid && (transferForm.get('transferDate').dirty || transferForm.get('transferDate').touched)">
+
+      <div *ngIf="transferForm.get('transferDate').errors.required">
+        <i>Data transferu jest wymagana</i>
+      </div>
+      <div *ngIf="transferForm.get('transferDate').errors.invalidDate">
+        <i>Pole musi zawierać datę w poprawnym formacie</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="price">Kwota transferu (zł):<sup>*</sup></label>
+    <input type="number" name="price" id="price" formControlName="price"/>
+    <div class="errors-text"
+         *ngIf="transferForm.get('price').invalid && (transferForm.get('price').dirty || transferForm.get('price').touched)">
+
+      <div *ngIf="transferForm.get('price').errors.required">
+        <i>Kwota transferu jest wymagana</i>
+      </div>
+      <div
+        *ngIf="transferForm.get('price').errors.invalidNumber">
+        <i>Wpisana kwota nie jest poprawna</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="commission">Prowizja (%):<sup>*</sup></label>
+    <input type="number" name="commission" id="commission" formControlName="commission"/>
+
+    <div class="errors-text"
+         *ngIf="transferForm.get('commission').invalid && (transferForm.get('commission').dirty || transferForm.get('commission').touched)">
+
+      <div *ngIf="transferForm.get('commission').errors.required">
+        <i>Podanie prowizji jest wymagane</i>
+      </div>
+      <div
+        *ngIf="transferForm.get('commission').errors.outOfRange">
+        <i>Podana wartość procentowa nie jest poprawna</i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="isLoan">Wypożyczenie?:<sup>*</sup>
+      <input type="checkbox" name="isLoan" id="isLoan"/>
+    </label>
+  </div>
+  <ng-container [formGroup]="contractDatesGroup">
+    <div>
+      <label for="contractStartDate">Początek kontraktu:<sup>*</sup></label>
+      <input type="date" name="contractStartDate" id="contractStartDate" formControlName="contractStartDate"/>
+      <div class="errors-text"
+           *ngIf="contractDatesGroup.get('contractStartDate').invalid && (contractDatesGroup.get('contractStartDate').dirty || contractDatesGroup.get('contractStartDate').touched)">
+
+        <div *ngIf="contractDatesGroup.get('contractStartDate').errors.required">
+          <i>Data początku kontraktu jest wymagana</i>
+        </div>
+        <div *ngIf="contractDatesGroup.get('contractStartDate').errors.invalidDate">
+          <i>Pole musi zawierać datę w poprawnym formacie</i>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="contractEndDate">Koniec kontraktu:<sup>*</sup></label>
+      <input type="date" name="contractEndDate" id="contractEndDate" required formControlName="contractEndDate"/>
+      <div class="errors-text"
+           *ngIf="contractDatesGroup.get('contractEndDate').invalid && (contractDatesGroup.get('contractEndDate').dirty || contractDatesGroup.get('contractEndDate').touched)">
+
+        <div *ngIf="contractDatesGroup.get('contractEndDate').errors.required">
+          <i>Data końca kontraktu jest wymagana</i>
+        </div>
+        <div *ngIf="contractDatesGroup.get('contractEndDate').errors.invalidDate">
+          <i>Pole musi zawierać datę w poprawnym formacie</i>
+        </div>
+      </div>
+    </div>
+
+    <div class="errors-text"
+         *ngIf="contractDatesGroup.invalid && (contractDatesGroup.dirty || contractDatesGroup.touched)">
+      <div *ngIf="contractDatesGroup.errors && contractDatesGroup.errors.dateAfter">
+        <i>Początek kontraktu nie może przypadać później niż koniec kontraktu</i>
+      </div>
+    </div>
+  </ng-container>
+
+  <div>
+    <input type="submit" value="Zapisz" class="form-action-button accept-button"/>
+    <a href="" class="action-button cancel-button">Anuluj</a>
+  </div>
+</form>

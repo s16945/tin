@@ -5,6 +5,7 @@ export interface Athlete {
   email: string;
   phoneNumber: number;
   birthDate: string;
+  currentClub: string;
 }
 
 export interface Manager {
@@ -20,7 +21,6 @@ export interface Transfer {
   _id: number;
   athlete_id: number;
   manager_id: number;
-  currentClub: string;
   newClub: string;
   transferDate: string;
   price: number;

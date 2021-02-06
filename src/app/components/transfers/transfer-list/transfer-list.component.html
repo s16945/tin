@@ -1,0 +1,29 @@
+<div class="table-container">
+  <table>
+    <tr>
+      <th *ngFor="let colName of headerNames">{{ colName }}</th>
+    </tr>
+    <tr *ngFor="let transfer of transfers$ | async">
+      <td>{{ transfer.athlete.firstName + ' ' + transfer.athlete.lastName }}</td>
+      <td>{{ transfer.manager.firstName + ' ' + transfer.manager.lastName }}</td>
+      <td>{{ getSimpleDate(transfer.transferDate) }}</td>
+      <td>{{ transfer.price }}</td>
+      <td>{{ transfer.commission }}</td>
+      <td>{{ transfer.isLoan ? 'TAK' : 'NIE' }}</td>
+      <td>{{ getSimpleDate(transfer.contractStartDate) }}</td>
+      <td>{{ getSimpleDate(transfer.contractEndDate) }}</td>
+      <td class="actions">
+        <ul>
+          <li>
+            <a [routerLink]="['edit', transfer._id]" class="table-action-button edit-button">Edytuj</a>
+          </li>
+          <li>
+            <a (click)="deleteRecord(transfer._id)" class="table-action-button delete-button">Usuń</a>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<a routerLink="add" class="action-button accept-button">Dodaj szczegóły nowego transferu</a>
