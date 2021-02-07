@@ -11,12 +11,14 @@ import {ManagerFormComponent} from './components/managers/manager-form/manager-f
 import {AthleteFormComponent} from './components/athletes/athlete-form/athlete-form.component';
 import {TransferFormComponent} from './components/transfers/transfer-form/transfer-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {JwtModule} from '@auth0/angular-jwt';
 import {LoginComponent} from './components/auth/login/login.component';
 import {RegisterComponent} from './components/auth/register/register.component';
 import {AthleteDetailsComponent} from './components/athletes/athlete-details/athlete-details.component';
 import {DatePipe} from '@angular/common';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -41,6 +43,13 @@ export function tokenGetter() {
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     JwtModule.forRoot({
       config: {
         tokenGetter,
@@ -53,4 +62,8 @@ export function tokenGetter() {
   bootstrap: [MainComponent],
 })
 export class MainModule {
+}
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }

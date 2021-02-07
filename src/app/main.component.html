@@ -1,20 +1,21 @@
 <header>
   <p *ngIf="authService.loggedIn()" class="username"><b>Zalogowany użytkownik:</b> {{ authService.getUsername() }}</p>
+  <a (click)="changeLanguage()" class="lang-selection action-button info-button">{{ currentLang }}</a>
 </header>
 
 <nav>
   <img src="assets/images/logo.jpg" alt="Fabryka sportu logo">
   <ul class="menu-items">
-    <li><a routerLink="/home" routerLinkActive="nav-item-active">Strona główna</a></li>
-    <li><a routerLink="/managers" routerLinkActive="nav-item-active">Managerowie</a></li>
-    <li><a routerLink="/athletes" routerLinkActive="nav-item-active">Sportowcy</a></li>
-    <li><a routerLink="/transfers" routerLinkActive="nav-item-active">Transfery</a></li>
+    <li><a routerLink="/home" routerLinkActive="nav-item-active">{{ 'main_page_nav' | translate }}</a></li>
+    <li><a routerLink="/managers" routerLinkActive="nav-item-active">{{ 'managers_nav' | translate }}</a></li>
+    <li><a routerLink="/athletes" routerLinkActive="nav-item-active">{{ 'athletes_nav' | translate }}</a></li>
+    <li><a routerLink="/transfers" routerLinkActive="nav-item-active">{{ 'transfers_nav' | translate }}</a></li>
     <ng-container *ngIf="!isLoggedIn() else loggedIn">
-      <li><a routerLink="/login" routerLinkActive="nav-item-active">Zaloguj</a></li>
+      <li><a routerLink="/login" routerLinkActive="nav-item-active">{{ 'login_nav' | translate }}</a></li>
     </ng-container>
 
     <ng-template #loggedIn>
-      <li><a (click)="logout()" routerLinkActive="nav-item-active">Wyloguj</a></li>
+      <li><a (click)="logout()" routerLinkActive="nav-item-active">{{ 'logout_nav' | translate }}</a></li>
     </ng-template>
   </ul>
 </nav>

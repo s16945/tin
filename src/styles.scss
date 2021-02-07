@@ -30,7 +30,8 @@ header {
     font-size: 0.8rem;
     width: 100%;
     text-align: right;
-    margin-right: 300px;
+    right: 200px;
+    position: fixed;
   }
 }
 
@@ -263,4 +264,8 @@ abbr[title='required'] {
   margin: 2rem 0 2rem 0;
 }
 
+.lang-selection {
+  right: 20px;
+  position: fixed;
+}
 

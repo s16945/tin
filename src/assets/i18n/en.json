@@ -1,0 +1,9 @@
+{
+  "main_page_nav": "Main page",
+  "managers_nav": "Managers",
+  "athletes_nav": "Athletes",
+  "transfers_nav": "Transfers",
+  "login_nav": "Log in",
+  "register_nav": "Register",
+  "logout_nav":"Logout"
+}
